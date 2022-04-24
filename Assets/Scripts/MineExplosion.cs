@@ -2,20 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnEnemy : MonoBehaviour
+public class MineExplosion : MonoBehaviour
 {
-    [SerializeField]
-
-    GameObject ship;
     // Start is called before the first frame update
     void Start()
     {
-        var shipEnemy = Instantiate(ship, transform);       
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.name == "ShipPlayer")
+        {
+            Destroy(gameObject);
+        }
     }
 }

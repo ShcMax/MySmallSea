@@ -2,15 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnEnemy : MonoBehaviour
+public class SpawnMines : MonoBehaviour
 {
     [SerializeField]
-
-    GameObject ship;
+    private GameObject mine;
     // Start is called before the first frame update
     void Start()
     {
-        var shipEnemy = Instantiate(ship, transform);       
+        var spawnMine = Instantiate(mine, transform);
     }
 
     // Update is called once per frame

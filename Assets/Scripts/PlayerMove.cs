@@ -4,33 +4,44 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {   
+    [SerializeField]    
     public float moveSpeed;
-    public float rotateSpeed;    
-
+    public float rotateSpeed; 
     private float vInput;
     private float hInput;
-    
-    // Start is called before the first frame update
-    void Start()
+
+    private float newSpeed = 1;
+    private float newRotate = 0.5f;    
+
+    private void Start()
     {
         
     }
-
     // Update is called once per frame
     void Update()
     {
         hInput = Input.GetAxis("Horizontal") * rotateSpeed;
         vInput = Input.GetAxis("Vertical") * moveSpeed;
 
-        transform.Translate(Vector3.forward *vInput * moveSpeed * Time.deltaTime);
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.Translate(Vector3.back * vInput * moveSpeed * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            transform.Translate(Vector3.zero);
+        }     
         transform.Rotate(Vector3.up *hInput * rotateSpeed * Time.deltaTime);
     }
 
-    //private void FixedUpdate()
-    //{
-    //    Vector3 rotation = Vector3.up * hInput;
-    //    Quaternion angleRot = Quaternion.Euler(rotation * Time.fixedDeltaTime);
-    //    rb.MovePosition(this.transform.position + this.transform.forward * vInput * Time.fixedDeltaTime);
-    //    rb.MoveRotation(rb.rotation * angleRot);
-    //}
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Baff"))
+        {
+            moveSpeed += newSpeed;
+            rotateSpeed += newRotate;
+        }
+    }
+
+    
 }
