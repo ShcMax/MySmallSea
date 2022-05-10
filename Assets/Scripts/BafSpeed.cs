@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class BafSpeed : MonoBehaviour
 {
-    [SerializeField] 
+    [SerializeField]    
+    private float _move = 4f;
+    [SerializeField]
+    private float _rotate = 2.5f;
+
+    private Player playerGetBaff;
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            //var controllerBuf = other.gameObject.GetComponent<PlayerMove>();
-            //controllerBuf.GetBaf(bafSpeed);
+            playerGetBaff = other.gameObject.GetComponent<Player>();
+            playerGetBaff.GetBaff(_move, _rotate);
+            Debug.Log(playerGetBaff.PlayerMove);
+            Debug.Log(playerGetBaff.PlayerRotate);
             Destroy(gameObject);
         }        
     }

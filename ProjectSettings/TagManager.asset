@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Mine
   - Baff
+  - Fort
+  - Land
+  - EnemyShip
   layers:
   - Default
   - TransparentFX
