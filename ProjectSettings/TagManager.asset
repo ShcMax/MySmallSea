@@ -9,6 +9,9 @@ TagManager:
   - Fort
   - Land
   - EnemyShip
+  - Reefs
+  - Warehouse
+  - Boat
   layers:
   - Default
   - TransparentFX

@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
 
     #region ядра и стрельба
     [SerializeField]
-    private GameObject coreRight, coreLeft;
+    private GameObject core;
     [SerializeField]
     private Transform cannonRight, cannonLeft;
     public float powerFire = 30;
@@ -67,24 +67,23 @@ public class Player : MonoBehaviour
         }
         transform.Rotate(Vector3.up * hInput * _playerRotate * Time.deltaTime);
     }
-
     public void FireCannonPlayer() // —трельба
     {
         var rayShootRigth = new Ray(cannonRight.position, cannonRight.forward);
         var rayShootLeft = new Ray(cannonLeft.position, cannonLeft.forward);
-        Debug.DrawRay(cannonRight.position, cannonRight.forward * 100, Color.green);
-        Debug.DrawRay(cannonLeft.position, cannonLeft.forward * 100, Color.green);
+        //Debug.DrawRay(cannonRight.position, cannonRight.forward * 100, Color.green);
+        //Debug.DrawRay(cannonLeft.position, cannonLeft.forward * 100, Color.green);
 
         if (Input.GetMouseButtonDown(1))
         {
-            GameObject rightCore = Instantiate(coreRight, cannonRight.position, Quaternion.identity);            
+            GameObject rightCore = Instantiate(core, cannonRight.position, Quaternion.identity);            
             rightCore.GetComponent<Rigidbody>().AddForce(rayShootRigth.direction * powerFire, ForceMode.Impulse);
             Destroy(rightCore, 5f);
         }
 
         if (Input.GetMouseButtonDown(0))
         {
-            GameObject leftCore = Instantiate(coreLeft, cannonLeft.position, Quaternion.identity);            
+            GameObject leftCore = Instantiate(core, cannonLeft.position, Quaternion.identity);            
             leftCore.GetComponent<Rigidbody>().AddForce(rayShootLeft.direction * powerFire, ForceMode.Impulse);
             Destroy(leftCore, 5f);
         }
