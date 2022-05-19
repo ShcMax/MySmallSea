@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4971557889773961886}
   - component: {fileID: 8747707023996460902}
   - component: {fileID: -8801846157672499107}
+  - component: {fileID: -5861950362242126642}
   m_Layer: 0
   m_Name: SpeedBaf
   m_TagString: Baff
@@ -27,14 +28,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6490086962257399587}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 4, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 1265617425562833008}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!33 &5970504376315262327
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -111,7 +112,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _move: 2
   _rotate: 1
-  speedRotate: 10
+--- !u!111 &-5861950362242126642
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6490086962257399587}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 1911ccb49e4870a4fa16a1a3af3064b7, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 1911ccb49e4870a4fa16a1a3af3064b7, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &7880251773276854956
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,13 +154,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7880251773276854956}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0.13969396, z: -0, w: 0.99019474}
   m_LocalPosition: {x: 0, y: 0.96, z: -0.006}
   m_LocalScale: {x: 0.0001, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 7473857326957918479}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -16.06, z: 0}
 --- !u!33 &6907757588905534400
 MeshFilter:
   m_ObjectHideFlags: 0

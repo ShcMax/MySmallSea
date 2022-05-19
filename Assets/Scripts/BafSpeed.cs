@@ -7,9 +7,7 @@ public class BafSpeed : MonoBehaviour
     [SerializeField]    
     private float _move = 4f;
     [SerializeField]
-    private float _rotate = 2.5f;
-    [SerializeField]
-    public float speedRotate = 1;
+    private float _rotate = 2.5f;    
 
     private Player playerGetBaff;
 
@@ -27,7 +25,7 @@ public class BafSpeed : MonoBehaviour
 
     private void Update()
     {
-        transform.Rotate(0, speedRotate * Time.deltaTime, 0, Space.Self);
+       
     }
 
 }

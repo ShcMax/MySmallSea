@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4563306871153143458}
   - component: {fileID: 5806147499425709957}
   - component: {fileID: 8032840152618666364}
+  - component: {fileID: 1050877536557330069}
   m_Layer: 0
   m_Name: WhiteFlag
   m_TagString: Untagged
@@ -33,7 +34,7 @@ Transform:
   - {fileID: 929184298946444713}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 9.142222}
 --- !u!33 &4563306871153143458
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -96,6 +97,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!111 &1050877536557330069
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043606592340843335}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 5ccc93ca43460d047ae26f65329167c1, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 5ccc93ca43460d047ae26f65329167c1, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &2845953544781108690
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,17 +5,18 @@ using UnityEngine;
 
 public class EnemyMind : MonoBehaviour
 {
-    [SerializeField]
+    //private Animation enemyDead;
+    [SerializeField]    
     public float enemyMaxHealth = 70;
     [SerializeField]
-    Transform playerPos, enemyShipPos;
+    Transform playerPos;
     //[SerializeField]
     //private float moveSpeed = 8; 
     //[SerializeField]
     //private float rotateSpeed = 2;
     [SerializeField]
-    Transform[] patrolWay;
-
+    Transform[] patrolWay;  
+    
     private float stopDistance = 6f;
 
     private NavMeshAgent enemyPatrol;
@@ -31,13 +32,13 @@ public class EnemyMind : MonoBehaviour
 
     private void Awake()
     {
-        enemyPatrol = GetComponent<NavMeshAgent>();
+        enemyDead = GetComponent<Animation>();
+        enemyPatrol = GetComponent<NavMeshAgent>();        
     }
     void Start()
-    {
+    {        
         _enemyHealth = enemyMaxHealth;
-        enemyPatrol.destination = patrolWay[zeroPatrolPoint].position;
-        //enemyShipPos = gameObject.transform;
+        enemyPatrol.destination = patrolWay[zeroPatrolPoint].position; 
     }
 
     // Update is called once per frame
@@ -60,8 +61,10 @@ public class EnemyMind : MonoBehaviour
     public void GetDamageCorePlayer(float damage)
     {
         _enemyHealth -= damage;
-        if (EnemyHealth <= 0)
+        if (EnemyHealth <= 0)        
         {
+            //gameObject.transform.SetParent(null);            
+            //enemyDead.Play();
             Destroy(gameObject);
         }
     }
@@ -74,7 +77,6 @@ public class EnemyMind : MonoBehaviour
             enemyPatrol.destination = playerPos.position;
         }
     }
-
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
