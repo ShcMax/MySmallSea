@@ -32,7 +32,7 @@ public class EnemyMind : MonoBehaviour
 
     private void Awake()
     {
-        enemyDead = GetComponent<Animation>();
+        //enemyDead = GetComponent<Animation>();
         enemyPatrol = GetComponent<NavMeshAgent>();        
     }
     void Start()
