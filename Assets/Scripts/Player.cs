@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,14 +12,20 @@ public class Player : MonoBehaviour
     private float vInput;
     private float hInput;
 
+    public Action<float> changeHealth; // событие дл€ графическое отображение здоровь€
+
     #region ядра и стрельба
     [SerializeField]
     private GameObject core;
     [SerializeField]
     private Transform cannonRight, cannonLeft;
     public float powerFire = 30;
-    #endregion
 
+    // ѕерезар€дка 
+    private float _timerRechargeRight;
+    private float _timerRechargeLeft;
+    private float _timer = 2;
+    #endregion    
 
     private float _playerHealth;
     private float _playerMove;
@@ -27,22 +34,29 @@ public class Player : MonoBehaviour
     public float PlayerMove { get => _playerMove; }
     public float PlayerRotate { get => _playerRotate; }
 
-    private void Start()
+    public float PlayerMaxHealth => playerMaxHealth; // свойство дл€ отображени€ здоровь€
+    private void Awake()
     {
         _playerHealth = playerMaxHealth;
+    }
+    private void Start()
+    {
         _playerMove = moveSpeed;
         _playerRotate = rotateSpeed;
     }
     // Update is called once per frame
     void Update()
     {
+        _timerRechargeRight += Time.deltaTime;
+        _timerRechargeLeft += Time.deltaTime;
         MovementPlayer();
         FireCannonPlayer();        
     }
     public void GetDamageMine(float damage) //”рон от мины
     {
         _playerHealth -= damage;
-        if(PlayerHealth <= 0)
+        changeHealth?.Invoke(_playerHealth);
+        if(_playerHealth <= 0)
         {
             Destroy(gameObject);
         }
@@ -74,18 +88,22 @@ public class Player : MonoBehaviour
         //Debug.DrawRay(cannonRight.position, cannonRight.forward * 100, Color.green);
         //Debug.DrawRay(cannonLeft.position, cannonLeft.forward * 100, Color.green);
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && _timerRechargeRight > _timer)
         {
+            _timerRechargeRight = 0;
             GameObject rightCore = Instantiate(core, cannonRight.position, Quaternion.identity);            
             rightCore.GetComponent<Rigidbody>().AddForce(rayShootRigth.direction * powerFire, ForceMode.Impulse);
             Destroy(rightCore, 5f);
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && _timerRechargeLeft > _timer)
         {
+            _timerRechargeLeft = 0;
             GameObject leftCore = Instantiate(core, cannonLeft.position, Quaternion.identity);            
             leftCore.GetComponent<Rigidbody>().AddForce(rayShootLeft.direction * powerFire, ForceMode.Impulse);
             Destroy(leftCore, 5f);
         }
+        
     }
+    
 }

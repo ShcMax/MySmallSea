@@ -12,6 +12,7 @@ TagManager:
   - Reefs
   - Warehouse
   - Boat
+  - PlayerProjectile
   layers:
   - Default
   - TransparentFX

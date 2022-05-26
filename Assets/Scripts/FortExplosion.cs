@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.AI;
 using UnityEngine;
 
 public class FortExplosion : MonoBehaviour
@@ -10,7 +11,13 @@ public class FortExplosion : MonoBehaviour
     GameObject whiteFlag;
     [SerializeField]
     Transform whiteFlagPosition_1, whiteFlagPosition_2;
-    
+    private NavMeshObstacle _fort;
+
+    private void Awake()
+    {
+        _fort = GetComponent<NavMeshObstacle>();
+    }
+
     // Start is called before the first frame update    
 
     private void OnTriggerEnter(Collider other)
@@ -21,6 +28,7 @@ public class FortExplosion : MonoBehaviour
             var flag_2 = Instantiate(whiteFlag, whiteFlagPosition_2);
             Destroy(gate_1);
             Destroy(gate_2);
+            _fort.enabled = false;
         }
     }
 }

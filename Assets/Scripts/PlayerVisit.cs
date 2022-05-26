@@ -7,12 +7,11 @@ public class PlayerVisit : MonoBehaviour
     [SerializeField]
     GameObject boat;
     [SerializeField]
-    Transform boatSpawn;
-    // Start is called before the first frame update
-    
-    private void OnTriggerEnter(Collider other)
+    Transform boatSpawn; 
+
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("PlayerProjectile"))
         {
             var boomBoat = Instantiate(boat, boatSpawn.transform);
         }

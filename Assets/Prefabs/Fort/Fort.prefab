@@ -657,7 +657,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4566875107887901238}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.583, z: -0.9}
+  m_LocalPosition: {x: -0, y: -1.583, z: -0.88}
   m_LocalScale: {x: 6, y: 0.5, z: 0.2}
   m_Children: []
   m_Father: {fileID: 1340932274233849703}
@@ -737,6 +737,7 @@ GameObject:
   - component: {fileID: 1599142712929652179}
   - component: {fileID: 4162520031801550488}
   - component: {fileID: 8829952726713673508}
+  - component: {fileID: -3832185614181152245}
   m_Layer: 0
   m_Name: Fort
   m_TagString: Untagged
@@ -814,7 +815,24 @@ MonoBehaviour:
   gate_1: {fileID: 0}
   gate_2: {fileID: 0}
   whiteFlag: {fileID: 0}
-  whiteFlagPosition: {fileID: 0}
+  whiteFlagPosition_1: {fileID: 0}
+  whiteFlagPosition_2: {fileID: 0}
+--- !u!208 &-3832185614181152245
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4587504944428056006}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 10, y: 2, z: 1}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &5361272666172999311
 GameObject:
   m_ObjectHideFlags: 0
@@ -937,7 +955,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5645476896178842949}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.007, z: -0.89}
+  m_LocalPosition: {x: 0, y: 0.007, z: -0.88}
   m_LocalScale: {x: 6, y: 0.5, z: 0.2}
   m_Children: []
   m_Father: {fileID: 1340932274233849703}
