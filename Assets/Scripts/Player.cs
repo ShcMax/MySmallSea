@@ -1,10 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Player : MonoBehaviour
-{   
+{
+    [SerializeField] GameObject welcom;
+    [SerializeField] Button begin;
+    [SerializeField] GameObject defeatMenu;
+    [SerializeField] Button againPlay;
     [SerializeField]
     public float playerMaxHealth = 100;
     public float moveSpeed;
@@ -13,6 +19,12 @@ public class Player : MonoBehaviour
     private float hInput;
 
     public Action<float> changeHealth; // событие дл€ графическое отображение здоровь€
+
+    [SerializeField] AudioSource fireCannonMusicLeft;
+    [SerializeField] AudioSource fireCannonMusicRight;
+
+    [SerializeField] ParticleSystem fireLeft;
+    [SerializeField] ParticleSystem fireRight;
 
     #region ядра и стрельба
     [SerializeField]
@@ -58,7 +70,8 @@ public class Player : MonoBehaviour
         changeHealth?.Invoke(_playerHealth);
         if(_playerHealth <= 0)
         {
-            Destroy(gameObject);
+            defeatMenu.SetActive(true);
+            Time.timeScale = 0;
         }
     }    
     public void GetBaff (float move, float rotate) //ѕодбор бафа на скорость и поворот
@@ -89,21 +102,29 @@ public class Player : MonoBehaviour
         //Debug.DrawRay(cannonLeft.position, cannonLeft.forward * 100, Color.green);
 
         if (Input.GetMouseButtonDown(1) && _timerRechargeRight > _timer)
-        {
+        {            
             _timerRechargeRight = 0;
+            fireCannonMusicRight.Play();
+            fireRight.Play();
             GameObject rightCore = Instantiate(core, cannonRight.position, Quaternion.identity);            
             rightCore.GetComponent<Rigidbody>().AddForce(rayShootRigth.direction * powerFire, ForceMode.Impulse);
             Destroy(rightCore, 5f);
         }
 
         if (Input.GetMouseButtonDown(0) && _timerRechargeLeft > _timer)
-        {
+        {            
             _timerRechargeLeft = 0;
+            fireCannonMusicLeft.Play();
+            fireLeft.Play();
             GameObject leftCore = Instantiate(core, cannonLeft.position, Quaternion.identity);            
             leftCore.GetComponent<Rigidbody>().AddForce(rayShootLeft.direction * powerFire, ForceMode.Impulse);
             Destroy(leftCore, 5f);
-        }
-        
+        }        
     }
-    
+    public void OnClickAgain()
+    {
+        SceneManager.LoadScene(1);
+        Time.timeScale = 1;
+    }
+
 }

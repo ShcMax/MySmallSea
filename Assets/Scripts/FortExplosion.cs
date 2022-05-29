@@ -12,6 +12,8 @@ public class FortExplosion : MonoBehaviour
     [SerializeField]
     Transform whiteFlagPosition_1, whiteFlagPosition_2;
     private NavMeshObstacle _fort;
+    [SerializeField] ParticleSystem explosion;
+    [SerializeField] AudioSource _explosionVois;
 
     private void Awake()
     {
@@ -24,10 +26,12 @@ public class FortExplosion : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Boat"))
         {
-            var flag_1 = Instantiate(whiteFlag, whiteFlagPosition_1);
-            var flag_2 = Instantiate(whiteFlag, whiteFlagPosition_2);
+            _explosionVois.Play();
+            explosion.Play();                        
             Destroy(gate_1);
             Destroy(gate_2);
+            var flag_1 = Instantiate(whiteFlag, whiteFlagPosition_1);
+            var flag_2 = Instantiate(whiteFlag, whiteFlagPosition_2);
             _fort.enabled = false;
         }
     }

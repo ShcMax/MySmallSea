@@ -5,7 +5,7 @@ using UnityEngine;
 public class MineExplosion : MonoBehaviour
 {
     [SerializeField]
-    private float _damage = 20;
+    private float _damage = 10;
     private Player playerDamage;
     // Start is called before the first frame update
 

@@ -18,7 +18,7 @@ public class PlayerCoreDamage : MonoBehaviour
             Debug.Log(enemyDamage.EnemyHealth);
             Destroy(gameObject);
         }
-        if (collision.gameObject.CompareTag("Land"))
+        if (collision.gameObject.CompareTag("Land") || collision.gameObject.CompareTag("Warehouse"))
         {
             Destroy(gameObject);
         }

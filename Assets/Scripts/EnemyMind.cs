@@ -15,8 +15,14 @@ public class EnemyMind : MonoBehaviour
     //[SerializeField]
     //private float rotateSpeed = 2;
     [SerializeField]
-    Transform[] patrolWay;  
-    
+    Transform[] patrolWay;
+
+    private float _damage = 1;
+    private float _damagePerSec = 0.2f;
+    private Player playerDamage;
+    private float _timeDamage;
+    private float cooldownDamage = 1;
+
     private float stopDistance = 6f;
 
     private NavMeshAgent enemyPatrol;
@@ -84,5 +90,23 @@ public class EnemyMind : MonoBehaviour
             playerPos = other.gameObject.transform;
             enemyPatrol.destination = playerPos.position;
         }
-    }    
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            playerDamage = collision.gameObject.GetComponent<Player>();
+            playerDamage.GetDamageMine(_damage);
+            Debug.Log(playerDamage.PlayerHealth);
+        }
+    }
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player") && _timeDamage > cooldownDamage)
+            _timeDamage = 0;
+            playerDamage = collision.gameObject.GetComponent<Player>();
+            playerDamage.GetDamageMine(_damagePerSec);
+            Debug.Log(playerDamage.PlayerHealth);
+    }
 }
